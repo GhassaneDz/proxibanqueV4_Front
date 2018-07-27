@@ -1,0 +1,13 @@
+
+
+div.left-page img {
+  width: 250px;
+  height: 250px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+div.left-page img:hover {
+    width: 300px;
+    height: 300px;
+  }
