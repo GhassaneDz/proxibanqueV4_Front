@@ -1,10 +1,10 @@
 export class Client{
 
-    email: string ;
-    firstName: string ;
     id: number ;
-	lastName: string ;
     number: string ;
+    firstName: string ;
+	lastName: string ;
+    email: string ;
     tel: string ;
 
     constructor(){}
