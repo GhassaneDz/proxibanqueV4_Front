@@ -53,22 +53,17 @@ export class NegativService {
   private republish(id: number, feedBack: FeedBack) {
 		let currentFeed = this.subjectFeed.value.slice();
 		if (id === null) {
-			// Création
 			currentFeed.push(feedBack);
 		} else {
-			// Récupération de l'indice de l'article à MAJ ou SUPPR.
 			let index = currentFeed.findIndex((a) => a.id === id);
 			if (index >= 0 && feedBack) {
-				// MAJ
 				currentFeed.splice(index, 1, feedBack);
 			} else if (index >= 0) {
-				// Suppression
 				currentFeed.splice(index, 1);
 			} else {
-				console.error(`Impossible de traiter une opération sur un article inexistant (id=${id})`);
+				console.error(`Impossible de traiter une opération sur un commentaire inexistant (id=${id})`);
 			}
 		}
-		// Republier la nouvelle liste d'articles à jour.
 		this.subjectFeed.next(currentFeed);
   }
 
