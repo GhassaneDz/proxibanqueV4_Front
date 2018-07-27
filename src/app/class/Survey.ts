@@ -1,4 +1,3 @@
-import { LocaleDataIndex } from "@angular/common/src/i18n/locale_data";
 import { FeedBack } from "./FeedBack";
 
 export class Survey{
