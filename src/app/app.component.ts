@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isSurvey = true ; 
-
   surveyTitle = ' Voudriez-vous adhérer à un service d’assurance automobile Proxibanque ?';
   displayTitle = 'Obtenir un devis d\'assurance auto' ;
   displaySubTitle = 'Simple, rapide et gratuit' ;
