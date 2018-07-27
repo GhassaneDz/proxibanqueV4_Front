@@ -7,7 +7,7 @@ import { Survey } from '../class/Survey';
 @Injectable({
   providedIn: 'root'
 })
-export class NegativServiceService {
+export class NegativService {
 
   private subjectFeed: BehaviorSubject<Array<FeedBack>>;
   private subjectSurvey: BehaviorSubject<Array<Survey>>;

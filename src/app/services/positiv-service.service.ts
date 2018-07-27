@@ -6,7 +6,7 @@ import { Client } from '../class/Client';
 @Injectable({
   providedIn: 'root'
 })
-export class PositivServiceService {
+export class PositivService {
 
   private subject: BehaviorSubject<Array<Client>>;
   private apiUrl: string;
@@ -24,7 +24,7 @@ export class PositivServiceService {
     return this.listClient;
   }
 
-  
+
 }
 
   

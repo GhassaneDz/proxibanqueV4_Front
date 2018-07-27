@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { NegativServiceService } from './negativ-service.service';
+import { NegativService } from './negativ-service.service';
 
-describe('NegativServiceService', () => {
+describe('NegativService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [NegativServiceService]
+      providers: [NegativService]
     });
   });
 
-  it('should be created', inject([NegativServiceService], (service: NegativServiceService) => {
+  it('should be created', inject([NegativService], (service: NegativService) => {
     expect(service).toBeTruthy();
   }));
 });
