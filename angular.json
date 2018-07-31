@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "proxibanqueV4Front": {
+    "proxibanqueV4FrontNadir": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/proxibanqueV4Front",
+            "outputPath": "dist/proxibanqueV4FrontNadir",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,13 +23,13 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",       
-              "src/styles.css"        
-            ],  
-            "scripts": [          
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
+            ],
+            "scripts": [
               "node_modules/jquery/dist/jquery.min.js",       
-              "node_modules/popper.js/dist/umd/popper.min.js",         
-              "node_modules/bootstrap/dist/js/bootstrap.min.js" 
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -55,18 +55,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "proxibanqueV4Front:build"
+            "browserTarget": "proxibanqueV4FrontNadir:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "proxibanqueV4Front:build:production"
+              "browserTarget": "proxibanqueV4FrontNadir:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "proxibanqueV4Front:build"
+            "browserTarget": "proxibanqueV4FrontNadir:build"
           }
         },
         "test": {
@@ -100,7 +100,7 @@
         }
       }
     },
-    "proxibanqueV4Front-e2e": {
+    "proxibanqueV4FrontNadir-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -108,11 +108,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "proxibanqueV4Front:serve"
+            "devServerTarget": "proxibanqueV4FrontNadir:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "proxibanqueV4Front:serve:production"
+              "devServerTarget": "proxibanqueV4FrontNadir:serve:production"
             }
           }
         },
@@ -128,5 +128,5 @@
       }
     }
   },
-  "defaultProject": "proxibanqueV4Front"
+  "defaultProject": "proxibanqueV4FrontNadir"
 }

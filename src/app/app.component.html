@@ -1,34 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-  
-
- <div *ngIf="isSurvey; then SurveyBlock; else displayBlock"> </div> 
-      
-      <ng-template #SurveyBlock>
-          <h1>
-              {{ surveyTitle }}
-          </h1>
-          <div class="container">
-              <div class="row align-items-center">
-                <div class="col"></div>
-                <div class="col"> <app-pos-feed-back></app-pos-feed-back>  </div>
-                <div class="col"></div>
-                <div class="col"> <app-neg-feed-back> </app-neg-feed-back> </div>
-                <div class="col"></div>
-              </div>
-          </div>
-      </ng-template>
-
-      <ng-template #displayBlock>
-        <div class="display-container"> 
-          <h1> {{ displayTitle }} </h1>
-          <h2>{{displaySubTitle}}</h2>
-        </div>
-          
-       
-      </ng-template>
+<router-outlet></router-outlet>
 
 
- 
- 
 

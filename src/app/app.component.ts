@@ -1,13 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { SurveyService } from './survey.service';
+import { Survey } from './survey';
+import {Router} from '@angular/router' ;
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  isSurvey = true ; 
-  surveyTitle = ' Voudriez-vous adhérer à un service d’assurance automobile Proxibanque ?';
-  displayTitle = 'Obtenir un devis d\'assurance auto' ;
-  displaySubTitle = 'Simple, rapide et gratuit' ;
+export class AppComponent implements OnInit {
+  
+
+constructor() { 
+  
 }
+
+ngOnInit() {
+  
+ 
+}
+
+
+
+
+
+}
+

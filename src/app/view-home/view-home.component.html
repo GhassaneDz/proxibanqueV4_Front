@@ -1,0 +1,36 @@
+  
+  <div *ngIf="isSurvey; then SurveyBlock; else displayBlock"> </div>
+  <ng-template #SurveyBlock>
+    
+
+    <h1>
+        {{ surveyTitle }}
+    </h1>
+    <div class="container" [hidden]="hideProperty">
+        <div class="row align-items-center">
+          <div class="col"></div>
+          <img   src="/assets/pouce-up.svg" (click)="positiveFeedBack(idCurrentSurvey)">
+          <div class="col"></div>
+          <img  src="/assets/pouce-down.svg" (click)="negativeFeedBack(idCurrentSurvey)">
+          <div class="col"></div>
+        </div>
+    </div>
+    
+  </ng-template>
+  
+  <ng-template #displayBlock>
+      <div class="principal-container">
+  <div class="test">
+     <div class="display-container"> 
+        <h1> {{ displayTitle }} </h1>
+        <h2>{{displaySubTitle}}</h2>
+     </div>
+     <div class="btn-group">
+       <button  type="button" >Par Téléphone</button>
+       <button  type="button"  >Par email</button>
+     </div>
+  </div> 
+</div> 
+  </ng-template>
+
+

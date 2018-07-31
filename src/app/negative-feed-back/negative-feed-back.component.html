@@ -1,0 +1,19 @@
+
+<div class="neg-container">
+<div class="form-group">
+    <fieldset>
+       <legend>Veuillez saisir votre commentaire:</legend>
+       <form #feedBackForm="ngForm" (ngSubmit)="submit(feedBackForm)"> 
+            <br />
+            <textarea [(ngModel)]= "feedBack.feedBackText" name="commentaire"  cols="61" rows="5"></textarea>
+            <br />
+           <button class="btn btn-primary">Valider</button>
+        </form>
+    </fieldset>
+  </div>
+
+</div>
+
+
+
+ 

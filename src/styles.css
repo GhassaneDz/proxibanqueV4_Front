@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-image: radial-gradient( rgba(215, 227, 230, 0.8),rgba(17,30,108,0.5)), url('/assets/back.jpg');
+}

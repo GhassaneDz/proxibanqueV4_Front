@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl:'http://localhost:8080/proxibanque/api'
+  apiUrl: 'http://localhost:8080/proxibanque/api', 
+  mockUrl : "/assets/surveys.json"
 };
 
 /*
