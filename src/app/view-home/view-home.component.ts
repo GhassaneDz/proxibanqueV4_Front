@@ -17,7 +17,7 @@ export class ViewHomeComponent implements OnInit {
 
   hideProperty = false ;
 
-  isSurvey : boolean = false;
+  isSurvey : boolean ;
   idCurrentSurvey : number ; 
   surveys : Array<Survey> ;
 
@@ -27,7 +27,26 @@ export class ViewHomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.surveys = new Array() ;
+    this.surveys = new Array() ; 
+    this.surveyService.getActualSurvey() 
+       .subscribe ((data) => {
+        if (data != 0) {
+          this.surveyService.getSurveyById(data)
+            .subscribe((d) => {
+              d.startDate = new Date (d.startDate);
+              d.endDate = new Date (d.endDate) ;
+              d.closeDate = new Date (d.closeDate);
+              this.idCurrentSurvey = d.id ;
+              this.isSurvey = true ;
+              this.surveyContactDate = this.computeDate(d.endDate) ; 
+
+            })
+        }
+        else {
+          this.isSurvey = false ;
+        }
+       })
+    /*this.surveys = new Array() ;
   this.surveyService.getSurveys() 
   .subscribe( (data) => { 
     
@@ -45,7 +64,7 @@ export class ViewHomeComponent implements OnInit {
         this.surveyContactDate = this.computeDate(test.endDate) ;      
       } 
     }
-  }); 
+  }); */
   }
 
   computeDate(EndD : Date) : number {

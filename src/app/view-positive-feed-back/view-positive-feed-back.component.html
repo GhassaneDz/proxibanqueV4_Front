@@ -1,4 +1,6 @@
-<app-positive-feed-back [feedBack] = "feedBack" [client] = "client"
+<app-positive-feed-back [feedBack] = "feedBack" [client] = "client" [messageNewClient]="messageNewClient"
+        [messageExistingClient] = "messageExistingClient"
+        [unknownClient]="unknownClient"
         (onFeedBackCreate) = "createFeedBack($event)"
         (onClientRead) = "readClient($event)">
     

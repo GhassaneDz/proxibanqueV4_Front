@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, ParamMap } from '../../../node_modules/@angular
 import { Location } from '@angular/common';
 import { Client } from '../client';
 import { ClientService } from '../client.service';
+import { SurveyService } from '../survey.service';
 
 @Component({
   selector: 'app-view-positive-feed-back',
@@ -15,9 +16,14 @@ export class ViewPositiveFeedBackComponent implements OnInit {
 
   feedBack : FeedBack = new FeedBack(); 
   client : Client = new Client() ;
+ 
+  messageExistingClient : string ; 
+  messageNewClient : string ; 
+  nbDays : number ;  
+  unknownClient : string ; 
 
   constructor(private feedbackService:FeedbackService, private location: Location, private route: ActivatedRoute, 
-    private router: Router, private clientService: ClientService) { this.feedBack.feedback = true ; }
+    private router: Router, private clientService: ClientService, private surveyService: SurveyService) { this.feedBack.feedback = true ; }
 
   ngOnInit() {
    
@@ -29,7 +35,7 @@ export class ViewPositiveFeedBackComponent implements OnInit {
   }
 
   createFeedBack (feed:FeedBack){
-    
+    feed.newClients = true ; 
     feed.client.firstName = this.client.firstName ;
     feed.client.lastName = this.client.lastName ;
     feed.client.tel = this.client.tel ; 
@@ -39,7 +45,6 @@ export class ViewPositiveFeedBackComponent implements OnInit {
     .subscribe ({  
       next: (newClient) => {console.log(`FeedBack ${newClient} créé !`);
                            feed.client.id = newClient.id ;
-                           console.log(feed.client.id);
                            feed.newClients = true ;  
                            this.feedbackService.create(feed) 
                            .subscribe({
@@ -47,15 +52,20 @@ export class ViewPositiveFeedBackComponent implements OnInit {
                              error: (errorMessage) => console.log(`Impossible de créer le feedBack ${feed} : ${errorMessage}`),
                              complete: () => {
                                console.log('Création du nouvel article terminée avec succès !');
-                               this.router.navigateByUrl('/home');
+                              
                              }
                             });}
       ,error: (errorMessage) => console.log(`Impossible de créer le feedBack ${feed.client} : ${errorMessage}`)
       ,complete: () => {
-                        console.log('Création du nouvel article terminée avec succès !');
-                        this.router.navigateByUrl('/home');
-                      }
-                         }) ; 
+        this.surveyService.getContactDays(this.feedBack.survey.id)
+        .subscribe ( (days) => {
+                   this.nbDays = days ;
+                   console.log(days);
+                   this.messageNewClient = 'Vous serez contacté dans un délai de ' + days + ' jours par un de nos conseillers experts en assurance auto.' ; 
+                   setTimeout(function(){ location.href = "/home" }, 4000);
+                      
+                      })
+                         }}) ; 
      
     } 
   
@@ -63,22 +73,33 @@ export class ViewPositiveFeedBackComponent implements OnInit {
      
      this.clientService.read(String(cl.number))
         .subscribe ({ 
-          next: (newClient) => {console.log(`FeedBack ${newClient} lu !`);
+          next: (newClient) => {
+                           if (newClient == null){
+                            this.unknownClient = 'Identifient Incorrecte, Veuillez entrer un identifient valide';
+                            setTimeout(function(){ location.href = "/home"}, 4000) ; 
+                           }
+                            
                            this.feedBack.client.id = newClient.id ; 
                            this.feedBack.newClients = false ;
                            this.feedbackService.create(this.feedBack) 
                            .subscribe({
                              next: (newFeedBack) => console.log(`FeedBack ${newFeedBack} créé !`), 
-                             error: (errorMessage) => console.log(`Impossible de créer le feedBack ${this.feedBack} : ${errorMessage}`),
+                             error: (errorMessage) => console.log(`Impossible de créer l'article ${newClient} : ${errorMessage}`),
                              complete: () => {
-                               console.log('Création du nouvel article terminée avec succès !');
-                               this.router.navigateByUrl('/home');
+                              
                              }
                             });}
           ,error: (errorMessage) => console.log(`Impossible de trouver le client ${cl} : ${errorMessage}`),
           complete: () => {
-            alert('merci de vous etre authentifié vous allez etre redirigé')
-            this.router.navigateByUrl('/home');
+            this.surveyService.getContactDays(this.feedBack.survey.id)
+               .subscribe ( (days) => {
+                  this.nbDays = days ;
+                  console.log(days);
+                  this.messageExistingClient = 'Vous serez contacté dans un délai de ' + days + ' jours par un de nos conseillers experts en assurance auto.' ; 
+
+               } ) 
+               setTimeout(function(){ location.href = "/home" }, 4000);
+           
           }
         }); 
   }

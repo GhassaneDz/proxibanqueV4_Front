@@ -19,6 +19,6 @@ export class ClientService {
   }
 
   read (number : string) : Observable<Client> {
-    return this.http.get<Client>(this.url + `/${number}`) ; 
+    return this.http.get<Client>(this.url + `/read` + `/${number}`) ; 
   }
 }

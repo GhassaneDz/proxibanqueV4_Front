@@ -8,6 +8,10 @@
             <textarea [(ngModel)]= "feedBack.feedBackText" name="commentaire"  cols="61" rows="5"></textarea>
             <br />
            <button class="btn btn-primary">Valider</button>
+           <hr>
+           <div *ngIf="messageComment" class="alert alert-info col-md-12">
+					  {{messageComment}}
+					</div>
         </form>
     </fieldset>
   </div>

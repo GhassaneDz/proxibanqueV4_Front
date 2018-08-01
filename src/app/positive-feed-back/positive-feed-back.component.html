@@ -6,9 +6,22 @@
     <fieldset>
        <legend>Identifiez-vous pour laisser un avis:</legend>
        <form #readForm="ngForm" (ngSubmit)="submitRead(readForm)" >
+          <div *ngIf="messageNewClient; then ifBlock; else elseBlock"> </div>
+          <ng-template #elseBlock>
           <input [(ngModel)] = "client.number" type="text" name="id" class="form-control marg" placeholder="Veuillez saisir votre identifiant" autocomplete="off" required>
+          </ng-template>
+          <ng-template #ifBlock>
+          <input  type="text" name="fake" class="form-control marg" placeholder="Veuillez saisir votre identifiant" autocomplete="off" >
+        </ng-template>
             <br />
-           <button class="btn btn-primary" >Login</button>
+           <button class="btn btn-primary"  >Login</button>
+           <hr>
+           <div *ngIf="messageExistingClient" class="alert alert-info col-md-12">
+					  {{messageExistingClient}}
+          </div>
+          <div *ngIf="unknownClient" class="alert alert-info col-md-12">
+					  {{unknownClient}}
+					</div>
         </form>
     </fieldset>
   </div>
@@ -21,8 +34,12 @@
             <input [(ngModel)] = "client.firstName" type="text" name="id" class="form-control space" placeholder="Veuillez saisir votre prénom" autocomplete="off" required>
             <input [(ngModel)] = "client.tel" type="text" name="tel" class="form-control space" placeholder="Veuillez saisir votre téléphone" autocomplete="off"  >
             <input [(ngModel)] = "client.email" type="email" name="email" class="form-control space" placeholder="Veuillez saisir votre email" autocomplete="off" >
+            <br />
              <button [disabled] = "disableProperty"   class="btn btn-primary" >Je m'inscrit</button>
-           
+             <hr>
+             <div *ngIf="messageNewClient" class="alert alert-info col-md-12">
+              {{messageNewClient}}
+            </div>
           </form>
       </fieldset>
     </div>

@@ -39,7 +39,7 @@ export class ViewNegativeFeedBackComponent implements OnInit {
       error: (errorMessage) => console.log(`Impossible de créer le feedBack ${feed} : ${errorMessage}`),
       complete: () => {
         console.log('Création du nouvel article terminée avec succès !');
-          this.router.navigateByUrl("/home") ; 
+        setTimeout(function(){ location.href = "/home" }, 4000);
       }
     }); 
   }

@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class NegativeFeedBackComponent implements OnInit {
 
+  @Input() messageComment ;
   @Input() feedBack : FeedBack ;
   @Output() onFeedBackCreate : EventEmitter<FeedBack>  ; 
 
@@ -24,6 +25,7 @@ export class NegativeFeedBackComponent implements OnInit {
 
   submit(form:NgForm) {
     this.onFeedBackCreate.emit(this.feedBack) ;
+    this.messageComment = "Merci d'avoir donné votre avis sur le sondage" ;
     form.resetForm() ;  
   }
 

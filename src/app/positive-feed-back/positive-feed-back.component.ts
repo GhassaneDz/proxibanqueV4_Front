@@ -14,6 +14,9 @@ export class PositiveFeedBackComponent implements OnInit {
   disableProperty : boolean = false ; 
 
   @Input() feedBack : FeedBack ;
+  @Input() messageNewClient ;
+  @Input() messageExistingClient ; 
+  @Input() unknownClient ;  
   @Input() client : Client ; 
   @Output() onFeedBackCreate : EventEmitter<FeedBack>  ; 
   @Output() onClientRead : EventEmitter<Client> ;
